@@ -34,7 +34,8 @@ const migrate = async (): Promise<void> => {
         "authors",
         "excerpt",
         "created_at_in_wordpress",
-        "updated_at"
+        "updated_at",
+        "featured_image"
     ).from(db.knexTable(Post.postsTable)) //.where("id", "=", "22821"))
 
     for (const post of posts) {
@@ -88,6 +89,7 @@ const migrate = async (): Promise<void> => {
                     title: post.title,
                     subtitle: post.excerpt,
                     excerpt: post.excerpt,
+                    "featured-image": post.featured_image,
                     authors: sortBy(authors, ["order"]).map(
                         (author) => author.author
                     ),
