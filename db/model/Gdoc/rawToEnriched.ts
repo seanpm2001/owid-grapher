@@ -1434,12 +1434,6 @@ function parseResearchAndWritingBlock(
     } else if (raw.value.secondary) {
         secondary.push(enrichLink(raw.value.secondary))
     }
-    if (secondary.length && primary.length > 1) {
-        return createError({
-            message:
-                "Secondary links can only be used when there's exactly one primary link",
-        })
-    }
 
     function parseRow(
         rawRow: RawBlockResearchAndWritingRow,
